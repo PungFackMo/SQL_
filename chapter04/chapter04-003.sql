@@ -1,43 +1,43 @@
 -- Documents\dev\database\workspace\chapter04\chapter04-003.sql
 
--- 03 ºä(view)
--- ¸¶´ç¼­Á¡¿¡¼­ ÅÃ¹è ¹è¼ÛÀ» ÇÏ±â À§ÇØ ÅÃ¹è¿¡ ÇÊ¿äÇÑ Á¤º¸¸¸ ÃßÃâ
--- ¸Å¹ø ÁúÀÇÇÒ ¶§¸¶´Ù Á¶ÀÎÀÌ³ª ºÎ¼ÓÁúÀÇ¸¦ ÇÏ´Â °ÍÀº »ó´çÈ÷ ¹ø°Å·Ó´Ù
--- ÅÃ¹è Á¤º¸¸¸ ÀúÀåµÇ¾î ÀÖÀ¸¸é ³ªÁß¿¡ °£ÆíÇÏ°Ô Á¤º¸¸¦ Á¶È¸ÇÒ ¼ö ÀÖ´Ù
--- ºä´Â ÇÏ³ª ÀÌ»óÀÇ Å×ÀÌºíÀ» ÇÕÇÏ¿© ¸¸µç °¡»óÀÇ Å×ÀÌºíÀÌ´Ù
--- select¹®À» ÅëÇØ ¾òÀº ÃÖÁ¾ °á°ú¸¦ °¡»óÀÇ Å×ÀÌºí·Î Á¤ÀÇÇÏ¿©
--- ½ÇÁ¦ Å×ÀÌºíÃ³·³ »ç¿ëÇÒ ¼ö ÀÖµµ·Ï ¸¸µç µ¥ÀÌÅÍº£ÀÌ½º °³Ã¼ÀÌ´Ù
+-- 03 ë·°(view)
+-- ë§ˆë‹¹ì„œì ì—ì„œ íƒë°° ë°°ì†¡ì„ í•˜ê¸° ìœ„í•´ íƒë°°ì— í•„ìš”í•œ ì •ë³´ë§Œ ì¶”ì¶œ
+-- ë§¤ë²ˆ ì§ˆì˜í•  ë•Œë§ˆë‹¤ ì¡°ì¸ì´ë‚˜ ë¶€ì†ì§ˆì˜ë¥¼ í•˜ëŠ” ê²ƒì€ ìƒë‹¹ížˆ ë²ˆê±°ë¡­ë‹¤
+-- íƒë°° ì •ë³´ë§Œ ì €ìž¥ë˜ì–´ ìžˆìœ¼ë©´ ë‚˜ì¤‘ì— ê°„íŽ¸í•˜ê²Œ ì •ë³´ë¥¼ ì¡°íšŒí•  ìˆ˜ ìžˆë‹¤
+-- ë·°ëŠ” í•˜ë‚˜ ì´ìƒì˜ í…Œì´ë¸”ì„ í•©í•˜ì—¬ ë§Œë“  ê°€ìƒì˜ í…Œì´ë¸”ì´ë‹¤
+-- selectë¬¸ì„ í†µí•´ ì–»ì€ ìµœì¢… ê²°ê³¼ë¥¼ ê°€ìƒì˜ í…Œì´ë¸”ë¡œ ì •ì˜í•˜ì—¬
+-- ì‹¤ì œ í…Œì´ë¸”ì²˜ëŸ¼ ì‚¬ìš©í•  ìˆ˜ ìžˆë„ë¡ ë§Œë“  ë°ì´í„°ë² ì´ìŠ¤ ê°œì²´ì´ë‹¤
 
--- ºäÀÇ »ý¼º
--- ºä¸¦ »ý¼ºÇÏ´Â ¹®¹ý
--- create view ºäÀÌ¸§ [(¿­ÀÌ¸§[,....n])]
--- as <select ¹®>
+-- ë·°ì˜ ìƒì„±
+-- ë·°ë¥¼ ìƒì„±í•˜ëŠ” ë¬¸ë²•
+-- create view ë·°ì´ë¦„ [(ì—´ì´ë¦„[,....n])]
+-- as <select ë¬¸>
 
--- book Å×ÀÌºí¿¡¼­ 'Ãà±¸'¶ó´Â ¹®±¸°¡ Æ÷ÇÔµÈ ÀÚ·á¸¸ º¸¿© ÁÖ´Â ºä¸¦ ¸¸µé¾î º¸ÀÚ
-select * from book where bookname like '%Ãà±¸%';
--- select ¹®À» ÀÌ¿ëÇØ ºä Á¤ÀÇ¹®À» ÀÛ¼º
+-- book í…Œì´ë¸”ì—ì„œ 'ì¶•êµ¬'ë¼ëŠ” ë¬¸êµ¬ê°€ í¬í•¨ëœ ìžë£Œë§Œ ë³´ì—¬ ì£¼ëŠ” ë·°ë¥¼ ë§Œë“¤ì–´ ë³´ìž
+select * from book where bookname like '%ì¶•êµ¬%';
+-- select ë¬¸ì„ ì´ìš©í•´ ë·° ì •ì˜ë¬¸ì„ ìž‘ì„±
 create view vw_book
-as select * from book where bookname like '%Ãà±¸%';
--- vw_bookÀÌ¶ó´Â ºä°¡ »ý¼ºµÇ¸ç ÀÏ¹Ý Å×ÀÌºíÃ³·³ »ç¿ëÇÒ ¼ö ÀÖ´Ù
--- ºä´Â ½ÇÁ¦ µ¥ÀÌÅÍ°¡ ÀúÀåµÇ´Â °Ô ¾Æ´Ï¶ó ºäÀÇ Á¤ÀÇ°¡ dbms¿¡ ÀúÀåµÇ´Â °ÍÀÌ´Ù
--- book Å×ÀÌºí¿¡ 'Ãà±¸'¶ó´Â ¹®±¸°¡ Æ÷ÇÔÇÑ µµ¼­°¡ »õ·Î Ãß°¡µÇ¸é
--- ÀÌ µ¥ÀÌÅÍ ¿ª½Ã ºä¿¡µµ ³ªÅ¸³­´Ù
--- ¸¸¾à Ãß°¡ µÇ´Â µµ¼­ ÀÌ¸§¿¡ 'Ãà±¸'¶ó´Â ¹®±¸°¡ Æ÷ÇÔµÇ¾î ÀÖÁö ¾ÊÀ¸¸é
--- bookÅ×ÀÌºí¿¡´Â Á¸ÀçÇÏÁö¸¸ ºä¿¡¼­´Â ³ªÅ¸³ªÁö ¾Ê´Â´Ù
+as select * from book where bookname like '%ì¶•êµ¬%';
+-- vw_bookì´ë¼ëŠ” ë·°ê°€ ìƒì„±ë˜ë©° ì¼ë°˜ í…Œì´ë¸”ì²˜ëŸ¼ ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤
+-- ë·°ëŠ” ì‹¤ì œ ë°ì´í„°ê°€ ì €ìž¥ë˜ëŠ” ê²Œ ì•„ë‹ˆë¼ ë·°ì˜ ì •ì˜ê°€ dbmsì— ì €ìž¥ë˜ëŠ” ê²ƒì´ë‹¤
+-- book í…Œì´ë¸”ì— 'ì¶•êµ¬'ë¼ëŠ” ë¬¸êµ¬ê°€ í¬í•¨í•œ ë„ì„œê°€ ìƒˆë¡œ ì¶”ê°€ë˜ë©´
+-- ì´ ë°ì´í„° ì—­ì‹œ ë·°ì—ë„ ë‚˜íƒ€ë‚œë‹¤
+-- ë§Œì•½ ì¶”ê°€ ë˜ëŠ” ë„ì„œ ì´ë¦„ì— 'ì¶•êµ¬'ë¼ëŠ” ë¬¸êµ¬ê°€ í¬í•¨ë˜ì–´ ìžˆì§€ ì•Šìœ¼ë©´
+-- bookí…Œì´ë¸”ì—ëŠ” ì¡´ìž¬í•˜ì§€ë§Œ ë·°ì—ì„œëŠ” ë‚˜íƒ€ë‚˜ì§€ ì•ŠëŠ”ë‹¤
 
--- 'Ãà±¸'¶ó´Â ¹®±¸°¡ Æ÷ÇÔµÈ ÀÚ·á¸¦ º¸ÀÌ½Ã¿À
-select * from book where bookname like '%Ãà±¸%';
--- ºä¸¦ ÀÌ¿ë
+-- 'ì¶•êµ¬'ë¼ëŠ” ë¬¸êµ¬ê°€ í¬í•¨ëœ ìžë£Œë¥¼ ë³´ì´ì‹œì˜¤
+select * from book where bookname like '%ì¶•êµ¬%';
+-- ë·°ë¥¼ ì´ìš©
 select * from vw_book;
 
--- ÁÖ¼Ò¿¡ '´ëÇÑ¹Î±¹'À» Æ÷ÇÔÇÏ´Â °í°´µé·Î ±¸¼ºµÈ ºä¸¦ ¸¸µé°í Á¶È¸ÇÏ½Ã¿À.
--- ºäÀÇ ÀÌ¸§Àº vw_customer·Î ¼³Á¤ÇÏ½Ã¿À.
+-- ì£¼ì†Œì— 'ëŒ€í•œë¯¼êµ­'ì„ í¬í•¨í•˜ëŠ” ê³ ê°ë“¤ë¡œ êµ¬ì„±ëœ ë·°ë¥¼ ë§Œë“¤ê³  ì¡°íšŒí•˜ì‹œì˜¤.
+-- ë·°ì˜ ì´ë¦„ì€ vw_customerë¡œ ì„¤ì •í•˜ì‹œì˜¤.
 create view vw_customer
-as select * from customer where address like '%´ëÇÑ¹Î±¹%';
+as select * from customer where address like '%ëŒ€í•œë¯¼êµ­%';
 select * from vw_customer;
 
--- orders Å×ÀÌºí¿¡¼­ °í°´ÀÌ¸§°ú µµ¼­ÀÌ¸§À» ¹Ù·Î È®ÀÎÇÒ ¼ö ÀÖ´Â ºä¸¦ »ý¼ºÇÑ ÈÄ,
--- '±è¿¬¾Æ' °í°´ÀÌ ±¸ÀÔÇÑ µµ¼­ÀÇ ÁÖ¹®¹øÈ£, µµ¼­ÀÌ¸§, ÁÖ¹®¾×À» º¸ÀÌ½Ã¿À.
+-- orders í…Œì´ë¸”ì—ì„œ ê³ ê°ì´ë¦„ê³¼ ë„ì„œì´ë¦„ì„ ë°”ë¡œ í™•ì¸í•  ìˆ˜ ìžˆëŠ” ë·°ë¥¼ ìƒì„±í•œ í›„,
+-- 'ê¹€ì—°ì•„' ê³ ê°ì´ êµ¬ìž…í•œ ë„ì„œì˜ ì£¼ë¬¸ë²ˆí˜¸, ë„ì„œì´ë¦„, ì£¼ë¬¸ì•¡ì„ ë³´ì´ì‹œì˜¤.
 select od.orderid, od.custid, cs.name,
     od.bookid, bk.bookname,od.saleprice,od.orderdate
 from orders od, customer cs, book bk
@@ -49,6 +49,27 @@ as select od.orderid, od.custid, cs.name,
 from orders od, customer cs, book bk
 where od.custid=cs.custid and od.bookid=bk.bookid;
 
--- ±è¿¬¾Æ °í°´ÀÌ ±¸ÀÔÇÑ µµ¼­ÀÇ ÁÖ¹®¹øÈ£, µµ¼­ÀÌ¸§, ÁÖ¹®¾×À» º¸ÀÌ½Ã¿À
+-- ê¹€ì—°ì•„ ê³ ê°ì´ êµ¬ìž…í•œ ë„ì„œì˜ ì£¼ë¬¸ë²ˆí˜¸, ë„ì„œì´ë¦„, ì£¼ë¬¸ì•¡ì„ ë³´ì´ì‹œì˜¤
 select orderid, bookname, saleprice from vw_orders
-where name='±è¿¬¾Æ';
+where name='ê¹€ì—°ì•„';
+
+-- ë·°ì˜ ìˆ˜ì •
+-- ë¬¸ë²•
+-- create or replace view ë·°ì´ë¦„ [(ì—´ì´ë¦„[,...n])]
+-- as selct ë¬¸
+
+-- vw_customerëŠ” ì£¼ì†Œê°€ 'ëŒ€í•œë¯¼êµ­'ì¸ ê³ ê°ì„ ë³´ì—¬ ì¤€ë‹¤.
+-- ì´ ë·°ë¥¼ 'ì˜êµ­'ì„ ì£¼ì†Œë¡œ ê°€ì§„ ê³ ê°ìœ¼ë¡œ ë³€ê²½í•˜ì‹œì˜¤.
+-- phoneì†ì„±ì€ í•„ìš”ì—†ìœ¼ë¯€ë¡œ í¬í•¨í•˜ì§€ ë§ˆì‹œì˜¤
+create or replace view vw_customer(custid, name, address)
+as select custid, name, address
+    from customer
+    where address like '%ì˜êµ­%';
+    
+    
+-- ë·°ì˜ ì‚­ì œ
+-- drop view ë·°ì´ë¦„ [,...n];
+
+-- vw_customerë¥¼ ì‚­ì œí•˜ì‹œì˜¤
+drop view vw_customer;
+select * from vw_customer;
